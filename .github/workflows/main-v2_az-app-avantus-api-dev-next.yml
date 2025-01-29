@@ -47,5 +47,5 @@ jobs:
         with:
           app-name: 'az-app-avantus-api-dev-next'
           slot-name: 'production'
-          publish-profile: ${{ secrets.AzureAppService_PublishProfile_c2481106d16b4a40a024ba8e5463cb08 }}
+          publish-profile: ${{ secrets.PUBLISHPROFILE }}
           images: 'ghcr.io/avantpage/avantus:n-api-${{ github.sha }}'
