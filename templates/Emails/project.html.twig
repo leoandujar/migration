@@ -1,0 +1,140 @@
+{% extends 'Emails/layoutap.html.twig' %}
+
+
+{% block head %}
+	<style>
+		/* Attribute list ------------------------------ */
+		.attributes {
+			margin: 0 0 21px;
+		}
+
+		.attributes_content {
+			background-color: #F4F4F7;
+			padding: 16px;
+		}
+
+		.attributes_item {
+			padding: 0;
+
+		}
+	</style>
+	{% endblock %}
+
+	{% block hero %}
+		{% include 'Emails/assets/images/u_create.svg.twig'
+		with {
+				width: "200",
+		} 
+	%}
+	{% endblock %}
+	{% block title %}
+		New
+		{{type}}
+	{% endblock %}
+	{% block content %}
+		<table border="0" cellpadding="0" cellspacing="0" width="100%" class="tableTitleDescription" style="">
+			<tbody>
+				<tr>
+					<td
+						align="center" valign="top" style="padding-bottom: 10px;" class="mediumTitle">
+						<!-- Medium Title Text // -->
+						<p class="text" style="color: rgb(51, 65, 85);font-family: 'Overpass', sans-serif; font-size: 18px; font-weight: 500; font-style: normal; letter-spacing: normal; line-height: 26px; text-transform: none; text-align: center; padding: 0px; margin: 0px;"></p>
+					</td>
+				</tr>
+
+				<tr>
+					<td
+						align="center" valign="top" style="padding-bottom: 20px;" class="description">
+						<!-- Description Text// -->
+						<p class="text" style="color: rgb(102, 102, 102); font-family: 'Overpass', sans-serif; font-size: 14px; font-weight: 400; font-style: normal; letter-spacing: normal; line-height: 22px; text-transform: none; text-align: justify; padding: 0px; margin: 0px;">
+							{{type}}
+							{{idNumber}}
+							has just been created in our system.
+						</p>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<table border="0" cellpadding="0" cellspacing="0" width="100%" class="tableTitleDescription" style="">
+			<tbody>
+				<tr>
+					<td
+						align="center" valign="top" style="padding-bottom: 20px;" class="description">
+						<!-- Description Text// -->
+						<p class="text" style="color: rgb(102, 102, 102); font-family: 'Overpass', sans-serif; font-size: 14px; font-weight: 400; font-style: normal; letter-spacing: normal; line-height: 22px; text-transform: none; text-align: justify; padding: 0px; margin: 0px;" data-font="active"></p>
+					</td>
+				</tr>
+				<tr class="text" style="color: rgb(51, 65, 85);font-family: 'Overpass', sans-serif; font-size: 16px; font-weight: 500; font-style: normal; letter-spacing: normal; line-height: 26px; text-transform: none; text-align: center; padding: 0px; margin: 0px;">
+					<td
+						align="center" valign="top" style="padding-bottom: 10px;" class="mediumTitle">
+						<!-- Medium Title Text // -->
+						<p>
+							{% if deadline %}
+								<span style="font-size: 14px;">
+									Deadline:
+								</span>
+								{{ deadline }}
+							{% endif %}
+						</p>
+					</td>
+				</tr>
+				<tr class="text" style="color: rgb(51, 65, 85);font-family: 'Overpass', sans-serif; font-size: 16px; font-weight: 500; font-style: normal; letter-spacing: normal; line-height: 26px; text-transform: none; text-align: center; padding: 0px; margin: 0px;">
+					<td
+						align="center" valign="top" style="padding-bottom: 10px;" class="mediumTitle">
+						<!-- Medium Title Text // -->
+						<p>
+							{% if instructions %}
+								<span style="font-size: 14px;">
+									Notes:
+								</span>
+								{{ instructions | raw }}
+							{% endif %}
+						</p>
+					</td>
+				</tr>
+
+				<tr>
+					<td
+						align="center" valign="top" style="padding-bottom: 20px;" class="description">
+						<!-- Description Text// -->
+						<p class="text" style="color: rgb(102, 102, 102); font-family: 'Overpass', sans-serif; font-size: 14px; font-weight: 400; font-style: normal; letter-spacing: normal; line-height: 22px; text-transform: none; text-align: justify; padding: 0px; margin: 0px;" data-font="active"></p>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<table border="0" cellpadding="0" cellspacing="0" width="100%" class="tableButton" style="">
+			<tbody>
+				<tr>
+					<td
+						align="center" valign="top" style="padding-top:20px;padding-bottom:20px;">
+						<!-- Button Table // -->
+						<table align="center" border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td
+										align="center" class="ctaButton" style="background-color: rgb(210, 153, 0); padding: 12px 35px; border-radius: 50px;">
+										<!-- Button Link // -->
+										{% if forCustomer %}
+											<a class="text" href="https://avantpage.app/secure/{{type|lower}}s/browse/{{id}}" target="_blank" style="color:#FFFFFF; font-family: 'Overpass', sans-serif; font-size:13px; font-weight:600; font-style:normal;letter-spacing:1px; line-height:20px; text-transform:uppercase; text-decoration:none; display:block">
+												Go to the
+												{{type}}
+											</a>
+										{% endif %}
+										{% if forCustomer == false %}
+											<a class="text" href="https://xtrf.avantpage.com/xtrf/faces/{{type|lower}}/edit.seam?action=display&id={{id}}" target="_blank" style="color:#FFFFFF; font-family: 'Overpass', sans-serif; font-size:13px; font-weight:600; font-style:normal;letter-spacing:1px; line-height:20px; text-transform:uppercase; text-decoration:none; display:block">
+												Go to the
+												{{type}}
+											</a>
+										{% endif %}
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</td>
+				</tr>
+			</tbody>
+
+		</td>
+	</tr>
+</table></td></tr></tbody></table>{% endblock %}

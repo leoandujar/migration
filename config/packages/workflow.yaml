@@ -1,0 +1,342 @@
+framework:
+  workflows:
+    xtrf_project:
+      type: 'workflow'
+      audit_trail:
+        enabled: true
+      marking_store:
+        type: 'method'
+        property: 'marking'
+      supports:
+        - App\Model\Entity\WFHistory
+      initial_marking: start
+      places:
+        - start
+        - init
+        - get_files
+        - upload
+        - post
+        - started
+      transitions:
+        initialized:
+          from: start
+          to: init
+        downloaded:
+          from: init
+          to: [ get_files, started ]
+        published:
+          from: get_files
+          to: upload
+        configured:
+          from: upload
+          to: post
+        finished:
+          from: post
+          to: started
+    xtrf_project_v2:
+      type: 'workflow'
+      audit_trail:
+        enabled: true
+      marking_store:
+        type: 'method'
+        property: 'marking'
+      supports:
+        - App\Model\Entity\WFHistory
+      initial_marking: start
+      places:
+        - start
+        - initialized
+        - retrieved
+        - processed
+        - created
+        - started
+        - finished
+      transitions:
+        initialize:
+          from: start
+          to: initialized
+        retrieve:
+          from: initialized
+          to: retrieved
+        process:
+          from: retrieved
+          to: processed
+        create:
+          from: processed
+          to: created
+        start_tasks:
+          from: created
+          to: started
+        finish:
+          from: [start, initialized, retrieved, processed, created, started]
+          to: finished
+
+    create_zip:
+      type: 'workflow'
+      audit_trail:
+        enabled: true
+      marking_store:
+        type: 'method'
+        property: 'marking'
+      supports:
+        - App\Model\Entity\WFHistory
+      initial_marking: start
+      places:
+        - start
+        - init
+        - get_json_list
+        - get_files
+        - create_zip
+        - upload
+      transitions:
+        initialized:
+          from: start
+          to: init
+        prepared:
+          from: init
+          to: get_json_list
+        downloaded:
+          from: get_json_list
+          to: get_files
+        published:
+          from: get_files
+          to: create_zip
+        finished:
+          from: create_zip
+          to: upload
+
+    xtm_project:
+      type: 'workflow'
+      audit_trail:
+        enabled: true
+      marking_store:
+        type: 'method'
+        property: 'marking'
+      supports:
+        - App\Model\Entity\WFHistory
+      initial_marking: start
+      places:
+        - start
+        - init
+        - get_content
+        - create_project
+        - notify
+      transitions:
+        initialized:
+          from: start
+          to: init
+        prepared:
+          from: init
+          to: get_content
+        finished:
+          from: get_content
+          to: create_project
+
+    github:
+      type: 'workflow'
+      audit_trail:
+        enabled: true
+      marking_store:
+        type: 'method'
+        property: 'marking'
+      supports:
+        - App\Model\Entity\WFHistory
+      initial_marking: start
+      places:
+        - start
+        - get_files
+        - get_last_commit
+        - get_commit_tree
+        - create_new_tree
+        - create_new_commit
+        - publish_commit
+        - create_pull
+        - merge
+      transitions:
+        initialized:
+          from: start
+          to: get_files
+        prepare:
+          from: get_files
+          to: get_last_commit
+        tree:
+          from: get_last_commit
+          to: get_commit_tree
+        new_tree:
+          from: get_commit_tree
+          to: create_new_tree
+        new_commit:
+          from: create_new_tree
+          to: create_new_commit
+        publish:
+          from: create_new_commit
+          to: publish_commit
+        new_pull:
+          from: publish_commit
+          to: create_pull
+        finish:
+          from: create_pull
+          to: merge
+
+    email_parsing:
+      type: 'workflow'
+      audit_trail:
+        enabled: true
+      marking_store:
+        type: 'method'
+        property: 'marking'
+      supports:
+        - App\Model\Entity\WFHistory
+      initial_marking: read_data
+      places:
+        - read_data
+        - validate_data
+        - generate_json
+        - create_project
+      transitions:
+        initialized:
+          from: read_data
+          to: validate_data
+        prepare_data:
+          from: validate_data
+          to: generate_json
+        project_create:
+          from: generate_json
+          to: create_project
+
+    xtm_tm:
+      type: 'workflow'
+      audit_trail:
+        enabled: true
+      marking_store:
+        type: 'method'
+        property: 'marking'
+      supports:
+        - App\Model\Entity\WFHistory
+      initial_marking: init
+      places:
+        - init
+        - find_external_ids
+        - generate_files
+        - download_files
+        - extract_zip_content
+        - create_zips
+        - upload_zips
+        - notify
+      transitions:
+        start:
+          from: init
+          to: find_external_ids
+        initialized:
+          from: find_external_ids
+          to: generate_files
+        generated:
+          from: generate_files
+          to: download_files
+        downloaded:
+          from: download_files
+          to: extract_zip_content
+        extracted:
+          from: extract_zip_content
+          to: create_zips
+        created:
+          from: create_zips
+          to: upload_zips
+        uploaded:
+          from: upload_zips
+          to: notify
+        notify:
+          from: [ find_external_ids, generate_files, download_files, extract_zip_content, create_zips, upload_zips ]
+          to: notify
+
+    attestation:
+      type: 'workflow'
+      audit_trail:
+        enabled: true
+      marking_store:
+        type: 'method'
+        property: 'marking'
+      supports:
+        - App\Model\Entity\WFHistory
+      initial_marking: init
+      places:
+        - init
+        - collect_info
+        - download_files
+        - get_files_content
+        - generate_pdf
+      transitions:
+        start:
+          from: init
+          to: init
+        collect:
+          from: init
+          to: collect_info
+        download:
+          from: collect_info
+          to: download_files
+        get_content:
+          from: download_files
+          to: get_files_content
+        generate:
+          from: get_files_content
+          to: generate_pdf
+
+    wf_xtrf_qbo:
+      type: 'workflow'
+      audit_trail:
+        enabled: true
+      marking_store:
+        type: 'method'
+        property: 'marking'
+      supports:
+        - App\Model\Entity\WFHistory
+      initial_marking: init
+      places:
+        - init
+        - collect_info
+        - prepare_objects
+        - create_invoices
+        - prepare_logs
+      transitions:
+        start:
+          from: init
+          to: init
+        collect:
+          from: init
+          to: collect_info
+        prepare:
+          from: collect_info
+          to: prepare_objects
+        invoicing:
+          from: prepare_objects
+          to: create_invoices
+    wf_bl_xtrf:
+      type: 'workflow'
+      audit_trail:
+        enabled: true
+      marking_store:
+        type: 'method'
+        property: 'marking'
+      supports:
+        - App\Model\Entity\WFHistory
+      initial_marking: init
+      places:
+        - init
+        - collect_info
+        - create_projects
+        - create_invoices
+        - prepare_logs
+      transitions:
+        start:
+          from: init
+          to: init
+        collect:
+          from: init
+          to: collect_info
+        prepare:
+          from: collect_info
+          to: create_projects
+        invoicing:
+          from: create_projects
+          to: create_invoices

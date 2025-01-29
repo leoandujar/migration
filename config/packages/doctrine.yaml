@@ -1,0 +1,67 @@
+parameters:
+  env(DATABASE_URL): ''
+  env(DATABASE_CHARSET): 'utf8'
+  env(DATABASE_COLLATE): 'utf8_unicode_ci'
+  env(DATABASE_DRIVER): 'pdo_pgsql'
+  env(DATABASE_VERSION): '10'
+
+doctrine:
+  dbal:
+    driver: '%env(resolve:DATABASE_DRIVER)%'
+    server_version: '%env(resolve:DATABASE_VERSION)%'
+    charset: '%env(resolve:DATABASE_CHARSET)%'
+    schema_filter: ~^(?!refresh_tokens_)~
+    default_table_options:
+      charset: '%env(resolve:DATABASE_CHARSET)%'
+      collate: '%env(resolve:DATABASE_COLLATE)%'
+
+    # With Symfony 3.3, remove the `resolve:` prefix
+    url: '%env(resolve:DATABASE_URL)%'
+  orm:
+    auto_generate_proxy_classes: true
+    naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
+    auto_mapping: true
+    report_fields_where_declared: true
+    validate_xml_mapping: true
+    enable_lazy_ghost_objects: true
+    controller_resolver:
+      auto_mapping: true
+    dql:
+      datetime_functions:
+        to_char: App\Model\Functions\ToChart
+        extract: App\Model\Functions\Extract
+        string_agg: App\Model\Functions\StringAgg
+        date_part: App\Model\Functions\DatePart
+      string_functions:
+        cast: App\Model\Functions\Cast
+        CONTAINS: App\Model\Functions\Contains
+        jsonb_like: App\Model\Functions\LikeJsonb
+    mappings:
+      App:
+        is_bundle: false
+        type: attribute
+        dir: '%kernel.project_dir%/src/Model/Entity/'
+        prefix: 'App\Model\Entity'
+        alias: App
+
+when@prod:
+  doctrine:
+    orm:
+      auto_generate_proxy_classes: false
+      metadata_cache_driver:
+        type: pool
+        pool: doctrine.system_cache_pool
+      query_cache_driver:
+        type: pool
+        pool: doctrine.system_cache_pool
+      result_cache_driver:
+        type: pool
+        pool: doctrine.result_cache_pool
+
+  framework:
+    cache:
+      pools:
+        doctrine.result_cache_pool:
+          adapter: cache.app
+        doctrine.system_cache_pool:
+          adapter: cache.system

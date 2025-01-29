@@ -1,0 +1,152 @@
+ID,IssueType,LevelDepth,Level1,Level2,Level3,Level4,Level5,ParentID,IsLeaf
+1,Accuracy,1,Accuracy,,,,,,0
+2,Addition,2,,Addition,,,,1,1
+3,"Mistranslation	",2,,"Mistranslation	",,,,1,0
+4,"Ambiguous translation	",3,,,"Ambiguous translation	",,,3,1
+5,"Date/time	",3,,,"Date/time	",,,3,1
+6,Edited ICE Match,3,,,Edited ICE Match,,,3,1
+7,Entity (such as name or place),3,,,Entity (such as name or place),,,3,1
+8,False friend,3,,,False friend,,,3,1
+9,Improper exact match,3,,,Improper exact match,,,3,1
+10,"Mistranslation of technical relationship	",3,,,"Mistranslation of technical relationship	",,,3,1
+11,Number,3,,,Number,,,3,1
+12,OLD_Terminology,3,,,OLD_Terminology,,,3,0
+13,"Normative terminology	",4,,,,"Normative terminology	",,12,1
+14,OLD_Company terminology,4,,,,OLD_Company terminology,,12,1
+15,Overly literal,3,,,Overly literal,,,3,1
+16,Should not have been translated,3,,,Should not have been translated,,,3,1
+17,Unit conversion,3,,,Unit conversion,,,3,1
+18,Omission,2,,Omission,,,,1,0
+19,"Omitted text	",3,,,"Omitted text	",,,18,1
+20,"Omitted variable	",3,,,"Omitted variable	",,,18,1
+21,"Over-translation	",2,,"Over-translation	",,,,1,1
+22,"Under-translation	",2,,"Under-translation	",,,,1,1
+23,"Untranslated	",2,,"Untranslated	",,,,1,0
+24,"Untranslated graphic	",3,,,"Untranslated graphic	",,,23,1
+25,"Untranslated text	",3,,,"Untranslated text	",,,23,1
+26,"Compatibility	",1,"Compatibility	",,,,,,1
+27,"Design	",1,"Design	",,,,,,0
+28,"Graphics and tables	",2,,"Graphics and tables	",,,,27,0
+29,"Call-outs and captions	",3,,,"Call-outs and captions	",,,28,1
+30,"Missing graphic/table	",3,,,"Missing graphic/table	",,,28,1
+31,"Position of graphic/table	",3,,,"Position of graphic/table	",,,28,1
+32,"Length	",2,,"Length	",,,,27,1
+33,"Local formatting	",2,,"Local formatting	",,,,27,0
+34,"Font	",3,,,"Font	",,,33,0
+35,"Bold/italic	",4,,,,"Bold/italic	",,34,1
+36,"Font, single/double-width (CJK only)",4,,,,"Font, single/double-width (CJK only)",,34,1
+37,"Wrong size	",4,,,,"Wrong size	",,34,1
+38,"Kerning	",3,,,"Kerning	",,,33,1
+39,"Leading	",3,,,"Leading	",,,33,1
+40,"Paragraph indentation	",3,,,"Paragraph indentation	",,,33,1
+41,"Text alignment	",3,,,"Text alignment	",,,33,1
+42,"Markup (formatting tags)	",2,,"Markup (formatting tags)	",,,,27,0
+43,"Added markup	",3,,,"Added markup	",,,42,1
+44,"Inconsistent markup	",3,,,"Inconsistent markup	",,,42,1
+45,"Misplaced markup	",3,,,"Misplaced markup	",,,42,1
+46,"Missing markup	",3,,,"Missing markup	",,,42,1
+47,"Questionable markup	",3,,,"Questionable markup	",,,42,1
+48,"Overall design (layout)	",2,,"Overall design (layout)	",,,,27,0
+49,"Color	",3,,,"Color	",,,48,1
+50,"Footnote/endnote format	",3,,,"Footnote/endnote format	",,,48,1
+51,"Global font choice	",3,,,"Global font choice	",,,48,1
+52,"Headers and footers	",3,,,"Headers and footers	",,,48,1
+53,"Margins	",3,,,"Margins	",,,48,1
+54,"Page breaks	",3,,,"Page breaks	",,,48,1
+55,"Widows/orphans	",3,,,"Widows/orphans	",,,48,1
+56,"Truncation/text expansion	",2,,"Truncation/text expansion	",,,,27,1
+57,"Whitespace	",2,,"Whitespace	",,,,27,1
+58,"Fluency	",1,"Fluency	",,,,,,0
+59,"_Content	",2,,"_Content	",,,,58,0
+60,"Ambiguity	",3,,,"Ambiguity	",,,59,0
+61,"Unclear reference	",4,,,,"Unclear reference	",,60,1
+62,"Duplication	",3,,,"Duplication	",,,59,1
+63,"Inconsistency	",3,,,"Inconsistency	",,,59,0
+64,"Images vs. text	",4,,,,"Images vs. text	",,63,1
+65,"Inconsistent abbreviations	",4,,,,"Inconsistent abbreviations	",,63,1
+66,"Inconsistent link/cross-reference	",4,,,,"Inconsistent link/cross-reference	",,63,1
+67,"OLD_Discourse	",4,,,,"OLD_Discourse	",,63,1
+68,"OLD_Document-internal-inconsistency	",4,,,,"OLD_Document-internal-inconsistency	",,63,1
+69,"OLD_Terminological inconsistency	",4,,,,"OLD_Terminological inconsistency	",,63,1
+70,"TM Inconsistency	",4,,,,"TM Inconsistency	",,63,1
+71,"Monolingual terminology	",3,,,"Monolingual terminology	",,,59,0
+72,"Normative monolingual terminology	",4,,,,"Normative monolingual terminology	",,71,1
+73,"OLD_Register	",3,,,"OLD_Register	",,,59,0
+74,"OLD_Variants/slang	",4,,,,"OLD_Variants/slang	",,73,1
+75,"OLD_Style	",3,,,"OLD_Style	",,,59,0
+76,"OLD_Client style guide	",4,,,,"OLD_Client style guide	",,75,1
+77,"OLD_In-house style	",4,,,,"OLD_In-house style	",,75,1
+78,"OLD_Unidiomatic	",4,,,,"OLD_Unidiomatic	",,75,1
+79,"_Mechanical	",2,,"_Mechanical	",,,,58,0
+80,"Character encoding	",3,,,"Character encoding	",,,79,1
+81,"Corpus conformance	",3,,,"Corpus conformance	",,,79,1
+82,"Grammar	",3,,,"Grammar	",,,79,0
+83,"Function words	",4,,,,"Function words	",,82,1
+84,"Word form	",4,,,,"Word form	",,82,0
+85,"Agreement	",5,,,,,"Agreement	",84,1
+86,"Part of speech	",5,,,,,"Part of speech	",84,1
+87,"Tense/mood/aspect	",5,,,,,"Tense/mood/aspect	",84,1
+88,"Word order	",4,,,,"Word order	",,82,1
+89,"Index/TOC	",3,,,"Index/TOC	",,,79,0
+90,"Incorrect/inconsistent TOC item	",4,,,,"Incorrect/inconsistent TOC item	",,89,1
+91,"OLD_Index/TOC format	",4,,,,"OLD_Index/TOC format	",,89,1
+92,"OLD_Page references	",4,,,,"OLD_Page references	",,89,1
+93,"Nonallowed characters	",3,,,"Nonallowed characters	",,,79,1
+94,"OLD_Broken link/cross-reference	",3,,,"OLD_Broken link/cross-reference	",,,79,0
+95,"OLD_Document-external	",4,,,,"OLD_Document-external	",,94,1
+96,"OLD_Document-external	",4,,,,"OLD_Document-external	",,94,1
+97,"OLD_Locale violation	",3,,,"OLD_Locale violation	",,,79,0
+98,"OLD_Date format	",4,,,,"OLD_Date format	",,97,1
+99,"OLD_Measurement format	",4,,,,"OLD_Measurement format	",,97,1
+100,"OLD_Measurement format	",4,,,,"OLD_Measurement format	",,97,1
+101,"OLD_Measurement format	",4,,,,"OLD_Measurement format	",,97,1
+102,"OLD_Measurement format	",4,,,,"OLD_Measurement format	",,97,1
+103,"OLD_Time format	",4,,,,"OLD_Time format	",,97,1
+104,"Pattern problem	",3,,,"Pattern problem	",,,79,1
+105,"Sorting (i.e. alphabetization)	",3,,,"Sorting (i.e. alphabetization)	",,,79,1
+106,"Spelling	",3,,,"Spelling	",,,79,0
+107,"Capitalization	",4,,,,"Capitalization	",,106,1
+108,"Diacritics	",4,,,,"Diacritics	",,106,1
+109,"Typography	",3,,,"Typography	",,,79,0
+110,"Punctuation	",4,,,,"Punctuation	",,109,1
+111,"Spacing	",4,,,,"Spacing	",,109,1
+112,"Unpaired quote marks or brackets	",4,,,,"Unpaired quote marks or brackets	",,109,1
+113,"Cohesion	",2,,"Cohesion	",,,,58,1
+114,"Grammatical register	",2,,"Grammatical register	",,,,58,1
+115,"Link/cross-reference	",2,,"Link/cross-reference	",,,,58,0
+116,"Document-external link	",3,,,"Document-external link	",,,115,1
+117,"Offensive	",2,,"Offensive	",,,,58,1
+118,"Unintelligible	",2,,"Unintelligible	",,,,58,1
+119,"Internationalization	",1,"Internationalization	",,,,,,1
+120,"Locale convention.	",1,"Locale convention.	",,,,,,0
+121,"Date format.	",2,,"Date format.	",,,,120,1
+122,".Locale-specific punctuation	",2,,".Locale-specific punctuation	",,,,120,0
+123,"Quote mark type	",3,,,"Quote mark type	",,,122,1
+124,"Measurement format.	",2,,"Measurement format.	",,,,120,1
+125,"Name format	",2,,"Name format	",,,,120,1
+126,"Number format.	",2,,"Number format.	",,,,120,1
+127,"Time format.	",2,,"Time format.	",,,,120,1
+128,"Other	",1,"Other	",,,,,,1
+129,"Style.	",1,"Style.	",,,,,,0
+130,"Awkward	",2,,"Awkward	",,,,129,1
+131,"Client style guide	",2,,"Client style guide	",,,,129,1
+132,"In-house style	",2,,"In-house style	",,,,129,1
+133,"Register.	",2,,"Register.	",,,,129,0
+134,"Variants/ slang	",3,,,"Variants/ slang	",,,133,1
+135,"Unidiomatic.	",2,,"Unidiomatic.	",,,,129,1
+136,"Terminology.	",1,"Terminology.	",,,,,,0
+137,"Inappropriate Archaism / Modernism	",2,,"Inappropriate Archaism / Modernism	",,,,136,1
+138,"Inconsistent use of terminology	",2,,"Inconsistent use of terminology	",,,,136,0
+139,"Multiple translations of same term	",3,,,"Multiple translations of same term	",,,138,1
+140,"Inconsistent with domain	",2,,"Inconsistent with domain	",,,,136,1
+141,"Inconsistent with glossary	",2,,"Inconsistent with glossary	",,,,136,0
+142,"Company terminology.	",3,,,"Company terminology.	",,,141,1
+143,"In-house terminology	",3,,,"In-house terminology	",,,141,1
+144,"Verity	",1,"Verity	",,,,,,0
+145,"Completeness	",2,,"Completeness	",,,,144,0
+146,"Lists	",3,,,"Lists	",,,145,1
+147,"Procedures	",3,,,"Procedures	",,,145,1
+148,"Culture-specific reference	",2,,"Culture-specific reference	",,,,144,1
+149,"End-user suitability	",2,,"End-user suitability	",,,,144,1
+150,"Legal requirements	",2,,"Legal requirements	",,,,144,1
+151,Locale applicability,2,,Locale applicability,,,,144,1

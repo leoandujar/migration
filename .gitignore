@@ -1,0 +1,32 @@
+###> symfony/framework-bundle ###
+/.env.local
+/.env.local.php
+/.env.*.local
+/.idea
+.idea
+.php-version
+/config/secrets/prod/prod.decrypt.private.php
+/config/secrets/dev/
+/public/bundles/
+/var/
+/vendor/
+###< symfony/framework-bundle ###
+###> lexik/jwt-authentication-bundle ###
+/config/jwt/
+/config/jwt/*.pem
+###< lexik/jwt-authentication-bundle ###
+.vscode
+.metals
+.DS_Store
+dump.rdb
+/.DS_Store
+
+###> friendsofphp/php-cs-fixer ###
+/.php-cs-fixer.php
+/.php-cs-fixer.cache
+###< friendsofphp/php-cs-fixer ###
+
+###> phpstan/phpstan ###
+phpstan.neon
+###< phpstan/phpstan ###
+/bin/.phpunit/

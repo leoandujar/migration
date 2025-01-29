@@ -1,0 +1,111 @@
+{% extends 'Emails/layoutap.html.twig' %}
+
+{% block hero %}
+	{% include 'Emails/assets/images/u_welcoming.svg.twig' 
+		with {
+				width: "200",
+		} 
+	%}
+{% endblock %}
+{% block title %}
+	Welcome to AvantPortal!
+{% endblock %}
+{% block content %}
+	<table border="0" cellpadding="0" cellspacing="0" width="100%" class="tableTitleDescription" style="">
+		<tbody>
+			<tr>
+				<td
+					align="center" valign="top" style="padding-bottom: 10px;" class="mediumTitle">
+					<!-- Medium Title Text // -->
+					<p class="text" style="color: rgb(51, 65, 85);font-family: 'Overpass', sans-serif; font-size: 18px; font-weight: 500; font-style: normal; letter-spacing: normal; line-height: 26px; text-transform: none; text-align: center; padding: 0px; margin: 0px;"></p>
+				</td>
+			</tr>
+
+			<tr>
+				<td
+					align="center" valign="top" style="padding-bottom: 20px;" class="description">
+					<!-- Description Text// -->
+					<p class="text" style="color: rgb(102, 102, 102); font-family: 'Overpass', sans-serif; font-size: 14px; font-weight: 400; font-style: normal; letter-spacing: normal; line-height: 22px; text-transform: none; text-align: justify; padding: 0px; margin: 0px;">
+						We are pleased to welcome you to AvantPortal. You can use your account to request a quote, set up a project, check the status of your projects, and download your translation files and invoices. We invite you to log in and look around in the portal.
+					</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<table border="0" cellpadding="0" cellspacing="0" width="100%" class="tableTitleDescription" style="">
+		<tbody>
+			<tr>
+				<td
+					align="center" valign="top" style="padding-bottom: 20px;" class="description">
+					<!-- Description Text// -->
+					<p class="text" style="color: rgb(102, 102, 102); font-family: 'Overpass', sans-serif; font-size: 14px; font-weight: 400; font-style: normal; letter-spacing: normal; line-height: 22px; text-transform: none; text-align: justify; padding: 0px; margin: 0px;" data-font="active">
+						For reference, here is your user name:
+
+					</p>
+				</td>
+			</tr>
+			<tr>
+				<td
+					align="center" valign="top" style="padding-bottom: 10px;" class="mediumTitle">
+					<!-- Medium Title Text // -->
+					<p class="text" style="color: rgb(51, 65, 85);font-family: 'Overpass', sans-serif; font-size: 16px; font-weight: 500; font-style: normal; letter-spacing: normal; line-height: 26px; text-transform: none; text-align: center; padding: 0px; margin: 0px;">
+						{{username}}
+					</p>
+				</td>
+			</tr>
+			<tr>
+				<td
+					align="center" valign="top" style="padding-bottom: 20px;" class="description">
+					<!-- Description Text// -->
+					<p class="text" style="color: rgb(102, 102, 102); font-family: 'Overpass', sans-serif; font-size: 14px; font-weight: 400; font-style: normal; letter-spacing: normal; line-height: 22px; text-transform: none; text-align: justify; padding: 0px; margin: 0px;" data-font="active">
+						You can use your existing password, or create a new one if this is your first time logging in.
+					</p>
+				</td>
+			</tr>
+
+			<tr>
+				<td
+					align="center" valign="top" style="padding-bottom: 20px;" class="description">
+					<!-- Description Text// -->
+					<p class="text" style="color: rgb(102, 102, 102); font-family: 'Overpass', sans-serif; font-size: 14px; font-weight: 400; font-style: normal; letter-spacing: normal; line-height: 22px; text-transform: none; text-align: justify; padding: 0px; margin: 0px;" data-font="active">
+						To learn more about the portal, your Avantpage Project Manager will be happy to arrange a short training session, to familiarize you with the most used features. A demo video and user manual are also available and can be downloaded here.
+					</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<table border="0" cellpadding="0" cellspacing="0" width="100%" class="tableButton" style="">
+		<tbody>
+			<tr>
+				<td
+					align="center" valign="top" style="padding-top:20px;padding-bottom:20px;">
+
+					<!-- Button Table // -->
+					<table align="center" border="0" cellpadding="0" cellspacing="0">
+						<tbody>
+							<tr>
+								<td
+									align="center" valign="top" style="padding-bottom: 20px;" class="description">
+									<!-- Description Text// -->
+									<p class="text" style="color: rgb(102, 102, 102); font-family: 'Overpass', sans-serif; font-size: 14px; font-weight: 400; font-style: normal; letter-spacing: normal; line-height: 22px; text-transform: none; text-align: justify; padding: 0px; margin: 0px;" data-font="active">
+										To start using the AvantPortal please confirm your account.
+									</p>
+								</td>
+							</tr>
+							<tr>
+								<td
+									align="center" class="ctaButton" style="background-color: rgb(210, 153, 0); padding: 12px 35px; border-radius: 50px;">
+									<!-- Button Link // -->
+									<a class="text" href="https://avantpage.app/welcome?username={{username}}" target="_blank" style="color:#FFFFFF; font-family: 'Overpass', sans-serif; font-size:13px; font-weight:600; font-style:normal;letter-spacing:1px; line-height:20px; text-transform:uppercase; text-decoration:none; display:block">
+										CONFIRM YOUR ACCOUNT
+									</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+				</td>
+			</tr>
+		</tbody>
+	</table>
+{% endblock %}

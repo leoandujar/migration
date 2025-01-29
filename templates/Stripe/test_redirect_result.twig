@@ -1,0 +1,37 @@
+<html>
+<head>
+	<title>Buy cool new product</title>
+</head>
+<body>
+
+{% if data.success == 'true' %}
+	<span>You Payment Looks OK so far, it can take few mins til we update the status of your invoice. Please be patient. You can find details below:</span>
+
+	<table id="table-list" class="table width-stretch table-hover">
+		<thead>
+		<tr>
+			<th class="text-nowrap">{% trans %}Final Number{% endtrans %}</th>
+			<th class="text-nowrap">{% trans %}Invoice Status{% endtrans %}</th>
+			<th class="text-nowrap">{% trans %}Payment Status{% endtrans %}</th>
+			<th class="text-nowrap">{% trans %}Paid Value{% endtrans %}</th>
+			<th class="text-nowrap">{% trans %}Total Netto{% endtrans %}</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td>{{ data.finalNumber }}</td>
+			<td>{{ data.status }}</td>
+			<td>{{ data.paymentStatus }}</td>
+			<td>{{ data.paidValue }}</td>
+			<td>{{ data.totalNetto }}</td>
+		</tr>
+		</tbody>
+	</table>
+{% else %}
+	<span>Your payment could not be processed. Please try again later</span>
+{% endif %}
+
+{#THIS URL BELOW NEED TO BE REPLACE WITH THE PAGE WHERE THE PAYMENT INIT, EG CP_INVOICE#}
+<a href="{{ path('test_details_invoice', {id: data.id}) }}" >Back to invoice details</a>
+</body>
+</html>

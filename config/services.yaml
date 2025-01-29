@@ -1,0 +1,291 @@
+# This file is the entry point to configure your own services.
+# Files in the packages/ subdirectory configure your dependencies.
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+
+services:
+  # default configuration for services in *this* file
+  _defaults:
+    autowire: true # Automatically injects dependencies in your services.
+    autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+  #    bind:
+  #      $kernelProjectDir: '%kernel.project_dir%'
+
+  # makes classes in src/ available to be used as services
+  # this creates a service per class whose id is the fully-qualified class name
+
+  ######## CLIENT PORTAL LAYER ###############################################################
+  #  App\CustomerPortal\:
+  #    resource: '../src/CustomerPortal'
+  #    exclude: '../src/CustomerPortal/{Entity,Migrations}'
+
+  ############################################################################################
+
+  App\:
+    resource: '../src/'
+    exclude:
+      - '../src/Model/Entity/'
+      - '../src/Model/Migrations/'
+      - '../src/Kernel.php'
+
+  ######## API CLIENT PORTAL LAYER ###################################################################
+  App\Apis\CustomerPortal\:
+    resource: "../src/Apis/CustomerPortal"
+    exclude: "../src/Apis/CustomerPortal/{Entity,Migrations}"
+
+  ############################################################################################
+
+  ######## API ADMIN PORTAL LAYER ############################################################
+  App\Apis\AdminPortal\:
+    resource: "../src/Apis/AdminPortal"
+    exclude: "../src/Apis/AdminPortal/{Entity,Migrations}"
+
+  ############################################################################################
+
+  ######## SHARED LAYER ############################################################
+  App\Apis\Shared\:
+    resource: "../src/Apis/Shared"
+    exclude: "../src/Apis/Shared/{Entity,Migrations}"
+
+  ############################################################################################
+
+  ######## MODEL LAYER #######################################################################
+  App\Model\:
+    resource: "../src/Model"
+    exclude: "../src/Model/{Entity,Migrations}"
+
+  ############################################################################################
+
+  ####### COMMANDS LAYER #####################################################################
+  App\Command\:
+    resource: "../src/Command"
+    exclude: "../src/Command/{DependencyInjection,Entity, Tests,Kernel.php}"
+
+  ############################################################################################
+
+  ####### CONNECTOR LAYER #####################################################################
+  App\Connector\:
+    resource: "../src/Connector"
+    exclude: "../src/Connector/{DependencyInjection,Entity, Tests,Kernel.php}"
+
+  ############################################################################################
+
+  ####### LINKERS LAYER####################################################################
+  App\Linker\:
+    resource: "../src/Linker"
+    exclude: "../src/Linker/{DependencyInjection,Entity, Tests,Kernel.php}"
+
+  ############################################################################################
+
+  ######## APP LAYER #########################################################################
+  App\Service\:
+    resource: "../src/Service"
+    exclude: "../src/Service/{DependencyInjection,Entity, Tests,Kernel.php}"
+
+  ############################################################################################
+
+  ######## INTERNAL SERVICES #################################################################
+  App\Linker\Services\RedisClients:
+    arguments:
+      $redisMainDB: "@snc_redis.redis_main_db"
+      $redisPasswordDB: "@snc_redis.redis_password_db"
+
+  Redis:
+    class: Redis
+    calls:
+      - connect:
+          - '%env(REDIS_HOST)%'
+          - '%env(int:REDIS_PORT)%'
+      - auth:
+          - '%env(REDIS_PASSWORD)%'
+  Symfony\Component\HttpFoundation\Session\Storage\Handler\RedisSessionHandler:
+    arguments:
+      - '@Redis'
+      - prefix: cp_session_
+  ############################################################################################
+
+  ######## FLY SYSTEM CLIENTS #################################################################
+  aws_client_1:
+    class: Aws\S3\S3Client
+    arguments:
+      - version: "%env(AWS_STORAGE_VERSION)%"
+        region: "%env(AWS_STORAGE_REGION)%"
+        endpoint: "%env(AWS_STORAGE_URL)%"
+        credentials:
+          key: "%env(AWS_STORAGE_KEY_ID)%"
+          secret: "%env(AWS_STORAGE_KEY)%"
+
+  azure_client_workflow:
+    class: MicrosoftAzure\Storage\Blob\BlobRestProxy
+    factory: [ 'MicrosoftAzure\Storage\Blob\BlobRestProxy', createBlobService ]
+    arguments: [ '%az.connection.string%' ]
+
+  azure_client_ftp:
+    class: MicrosoftAzure\Storage\Blob\BlobRestProxy
+    factory: [ 'MicrosoftAzure\Storage\Blob\BlobRestProxy', createBlobService ]
+    arguments: [ '%az.ftp.connection.string%' ]
+
+  azure_client_archive:
+    class: MicrosoftAzure\Storage\Blob\BlobRestProxy
+    factory: [ 'MicrosoftAzure\Storage\Blob\BlobRestProxy', createBlobService ]
+    arguments: [ '%az.archive.connection.string%' ]
+
+  azure_service_settings_workflow:
+    class: MicrosoftAzure\Storage\Common\Internal\StorageServiceSettings
+    arguments:
+      $name: '%env(AZURE_STORAGE_ACCOUNT_NAME)%'
+      $key: '%env(AZURE_STORAGE_ACCOUNT_KEY)%'
+      $blobEndpointUri: '%az.storage.account.blobEndpointUri%'
+      $tableEndpointUri: '%az.storage.account.tableEndpointUri%'
+      $queueEndpointUri: '%az.storage.account.queueEndpointUri%'
+      $fileEndpointUri: '%az.storage.account.fileEndpointUri%'
+
+  azure_adapter_ftp:
+    class: League\Flysystem\AzureBlobStorage\AzureBlobStorageAdapter
+    arguments:
+      $client: '@azure_client_ftp'
+      $container: '%env(AZURE_STORAGE_FTP_CONTAINER)%'
+      $serviceSettings: '@azure_service_settings_workflow'
+
+
+  azure_service_settings_archive:
+    class: MicrosoftAzure\Storage\Common\Internal\StorageServiceSettings
+    arguments:
+      $name: '%env(AZURE_STORAGE_ARCHIVE_ACCOUNT_NAME)%'
+      $key: '%env(AZURE_STORAGE_ARCHIVE_ACCOUNT_KEY)%'
+      $blobEndpointUri: '%az.storage.archive.account.blobEndpointUri%'
+      $tableEndpointUri: '%az.storage.archive.account.tableEndpointUri%'
+      $queueEndpointUri: '%az.storage.archive.account.queueEndpointUri%'
+      $fileEndpointUri: '%az.storage.archive.account.fileEndpointUri%'
+
+
+  azure_adapter_workflow:
+    class: League\Flysystem\AzureBlobStorage\AzureBlobStorageAdapter
+    arguments:
+      $client: '@azure_client_workflow'
+      $container: '%env(AZURE_STORAGE_WORKFLOW_CONTAINER)%'
+      $serviceSettings: '@azure_service_settings_workflow'
+
+  azure_adapter_archive:
+    class: League\Flysystem\AzureBlobStorage\AzureBlobStorageAdapter
+    arguments:
+      $client: '@azure_client_archive'
+      $container: '%env(AZURE_STORAGE_ARCHIVE_CONTAINER)%'
+      $serviceSettings: '@azure_service_settings_archive'
+
+
+
+  ############################################################################################
+
+  ######## APP WORKFLOW #########################################################################
+  App\Workflow\:
+    resource: "../src/Workflow"
+    exclude: "../src/Workflow/{DependencyInjection,Entity, Tests,Kernel.php}"
+  ############################################################################################
+
+  ######## APP WORKFLOW SERVICES #############################################################
+  App\Workflow\Services\:
+    resource: "../src/Workflow/Services"
+    tags: [ "monolog.logger" ]
+  ############################################################################################
+
+  ######## APP WORKFLOW Subscribers ##########################################################
+  App\Workflow\Subscribers\:
+    resource: "../src/Workflow/Subscribers"
+    tags: [ "monolog.logger" ]
+  ############################################################################################
+
+  ######## APP WORKFLOW START SERVICES ##########################################################
+  # dev worflow services
+  wf_xtrf_project:
+    class: App\Workflow\Services\XtrfProject\Start
+    public: true
+
+  wf_create_zip:
+    class: App\Workflow\Services\CreateZip\Start
+    public: true
+
+  wf_xtm_project:
+    class: App\Workflow\Services\XtmProject\Start
+    public: true
+
+  wf_xtm_github:
+    class: App\Workflow\Services\XtmGithub\Start
+    public: true
+
+  wf_email_parsing:
+    class: App\Workflow\Services\EmailParsing\Start
+    public: true
+
+  wf_xtm_tm:
+    class: App\Workflow\Services\XtmTm\Start
+    public: true
+
+  wf_attestation:
+    class: App\Workflow\Services\Attestation\Start
+    public: true
+
+  wf_xtrf_qbo:
+    class: App\Workflow\Services\XtrfQbo\Start
+    public: true
+
+  wf_bl_xtrf:
+    class: App\Workflow\Services\BlXtrf\Start
+    public: true
+
+  wf_xtrf_project_v2:
+    class: App\Workflow\Services\XtrfProjectV2\Start
+    public: true
+
+
+  ############################################################################################
+  ######################## GENERAL SERVICES #################################################
+  api.utils_services:
+    class: App\Apis\Shared\Util\UtilsService
+    public: true
+
+  Symfony\Component\DependencyInjection\ContainerInterface: '@service_container'
+  ############################################################################################
+  ######################## MONOLOG SERVICES #################################################
+  App\Service\Logger\Handlers\LokiHandler:
+    arguments:
+      $apiConfig:
+        entrypoint: '%env(LOKI_URL)%'
+        context:
+          app: '%env(LOGS_APP)%'
+        labels:
+          env: '%env(APP_ENV)%'
+        app: '%env(LOGS_APP)%'
+        client_name: '%env(LOGS_HOST)%'
+        auth:
+          basic:
+            user: '%env(LOKI_USER)%'
+            password: '%env(LOKI_PASSWORD)%'
+        curl_options:
+          !php/const CURLOPT_CONNECTTIMEOUT_MS: '%env(LOKI_CONNECT_TIMEOUT)%'
+          !php/const CURLOPT_TIMEOUT_MS: '%env(LOKI_TIMEOUT)%'
+
+  lexik_jwt_authentication.jwt_manager:
+    class: App\Apis\CustomerPortal\Services\JWTManagerService
+    arguments:
+      $encoder: '@lexik_jwt_authentication.encoder'
+      $dispatcher: '@event_dispatcher'
+      $userIdClaim: '%lexik_jwt_authentication.user_id_claim%'
+  ############################################################################################
+
+  ######## LOGIN SERVICES #################################################################
+  App\Apis\Shared\Listener\AuthenticationListener:
+    arguments:
+      $jwtSrv: '@App\Service\JwtService'
+      $em: '@doctrine.orm.entity_manager'
+      $validator: '@validator'
+    tags:
+      - { name: 'kernel.event_listener', event: 'kernel.request', method: 'onKernelRequest' }
+
+  ############################################################################################
+
+
+
+

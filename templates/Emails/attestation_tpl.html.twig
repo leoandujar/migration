@@ -1,0 +1,207 @@
+<html>
+	<head>
+		<style>
+			.logo {
+
+				position: fixed;
+
+				top: 1%;
+
+				right: 10%;
+
+			}
+
+
+			.title {
+
+				position: relative;
+
+				top: 7%;
+
+				text-align: center;
+
+				font-size: 22px;
+
+
+			}
+
+			.title_old {
+
+				position: fixed;
+
+				top: 5%;
+
+				left: 40%;
+
+				font-size: 22px;
+
+			}
+
+			.body {
+
+				position: relative;
+
+				top: 10%;
+
+				font-size: 14px;
+
+				font-family: serif, "SunExtA", sunexta, "SunExtB", sunextb, "UnBatang", unbatang;
+
+				margin-left: 100px;
+
+				margin-right: 100px;
+
+			}
+
+			.text-block {
+
+				position: relative;
+
+				margin-bottom: 10px;
+
+				font-family: serif, "SunExtA", sunexta, "SunExtB", sunextb, "UnBatang", unbatang;
+			}
+
+			.signature {
+
+				position: relative;
+				right: 40%;
+				margin-bottom: 30px;
+
+
+			}
+			.signature-image {
+				position: relative;
+				right: 40%;
+				margin-bottom: -10px;
+
+			}
+
+			.notarize {
+
+				position: fixed;
+
+				margin-bottom: 40px;
+
+				bottom: 5%;
+
+				left: 65%;
+
+			}
+
+			.footer {
+
+				position: fixed;
+				bottom: 10px;
+
+
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<table style="border-bottom: 1px solid #ccc; vertical-align: bottom;" width="100%">
+				<tbody>
+					<tr>
+						<td style="text-align: right; font-weight: bold;" width="50%">
+							<img src="https://imagedelivery.net/J0SC3p_qqwQ9UBTxIQllsg/eb628c77-c34d-4d9b-01df-330cbb97e700/logo" width="13%"/>
+
+
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div>
+			<h2 class="title">Certificate of Mailing</h2>
+
+			<div class="body">
+				<div class="text-block">
+					<p align="justify">
+						I, Vera Hooijdonk, solemnly declare, under penalty of perjury, that to the best of my knowledge and belief, the
+																																																																																																																																																																																																																																																																																																																																																												            below
+																																																																																																																																																																																																																																																																																																																																																												            member letter was translated, printed, and mailed to the individual health plan member referenced below.
+					</p>
+				</div>
+				<div class="text-block">
+					<p align="justify">
+						Letter received from Kaiser Permanente:
+						{{ docData.date }}
+						<br>
+						Translation language:
+						{{ docData.language }}
+						<br>
+						Date of mailing to member:
+						{{ docData.date }}
+						<br>
+						Class of mail: USPS First-Class
+						<br>
+					</p>
+				</div>
+				<div class="text-block">
+					<p align="justify">
+						This request for translation and mailing was made by:
+					</p>
+				</div>
+				<div class="text-block">
+					<p align="center">
+						{{ contact.email }}
+						<br>
+						{{ contact.address }}
+					</p>
+				</div>
+				<div class="text-block">
+					<p align="justify">
+						The mailing contained letter(s) for the following Kaiser Permanente member(s):
+					</p>
+				</div>
+				<div class="text-block">
+					<p align="center">
+						{{ docData.type }}_{{ docData.member }}
+						<br>
+					</p>
+				</div>
+				<div class="text-block">
+					<p align="justify">
+						I declare under penalty of perjury under the laws of the State of California that the foregoing is true and
+																																																																																																																																																																																																																																																																																																																																																												            correct.
+					</p>
+				</div>
+
+
+				<div class="signature">
+
+					<p align="center"><img class="signature-image" src="https://imagedelivery.net/J0SC3p_qqwQ9UBTxIQllsg/aac0e544-ebbf-42bd-e48b-9dad4337f500/logo" width="111px"/>
+					</p>
+					<p align="center">
+
+
+						__________________________<br/>
+
+
+						Vera Hooijdonk<br/>
+
+						Director of Operations<br/>
+
+						Avantpage Inc.<br/>
+					</p>
+
+				</div>
+			</div>
+		</div>
+		<div class="footer">
+			<table style="border-top: 1px solid #000000; vertical-align: bottom; font-family: serif; font-size: 9pt; color: #000000;" width="100%">
+				<tbody>
+					<tr>
+						<td style="text-align: center;" width="100%">132 E St. #370, Davis, California 95616
+							<br>
+							(530) 750-2040   ♦ Fax: (530) 750-2024
+							<br>
+							info@avantpage.com  ♦ www.avantpage.com</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+	</body>
+</html>

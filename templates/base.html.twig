@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}AvantData{% endblock %}</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}">
+    {% endblock %}
+</head>
+<body>
+<div id="grid">
+    <header>
+        <div></div>
+    </header>
+    <main>
+        {% block body %}
+            <div></div>
+        {% endblock %}
+    </main>
+    <aside>
+        {% block sidebar %}
+            <p></p>
+        {% endblock %}
+    </aside>
+    <footer>
+        © Avantpage. All Rights Reserved.
+    </footer>
+</div>
+
+{% block javascripts %}{% endblock %}
+</body>
+</html>

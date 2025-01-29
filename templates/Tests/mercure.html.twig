@@ -1,0 +1,60 @@
+<html>
+<head>
+    <title>Buy cool new product</title>
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+<button id="dispatch-button">Dispatch</button>
+<button id="subscription-button">Subscription</button>
+<script type="text/javascript">
+	"use strict";
+
+	(function () {
+		var dispatchButton = document.getElementById('dispatch-button');
+		dispatchButton.addEventListener('click', function() {
+			var opts = {
+				method: 'GET',
+				headers: {}
+			};
+			fetch('mercure/dispatch', opts).then(function (response) {
+				return response.json();
+			})
+				.then(function (body) {
+					//doSomething with body;
+				});
+		});
+		var subsButton = document.getElementById('subscription-button');
+		subsButton.addEventListener('click', function() {
+            try {
+                let lastEventId = '';
+                console.log()
+                const url = new URL('http://127.0.0.1:3000/.well-known/mercure');
+                url.searchParams.append('topic', 'files/565');
+                url.searchParams.append('topic', 'commands/565');
+                url.searchParams.append('Last-Event-ID',lastEventId);
+
+                const eventSource = new EventSource(url.toString(), {withCredentials: true});
+                eventSource.addEventListener('error', (e) => {
+                    console.log(e.data)
+                });
+                // onerror version
+                eventSource.onerror = (e) => {
+                    console.log(e.data)
+                };
+                eventSource.onmessage = (e) => {
+                    console.log(JSON.parse(e.data))
+                    lastEventId = e.lastEventId;
+                    console.log(lastEventId)
+                }
+            } catch (e) {
+                error(e);
+                return;
+            }
+		});
+
+	})();
+</script>
+
+
+</body>
+</html>

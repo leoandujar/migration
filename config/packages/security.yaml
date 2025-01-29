@@ -1,0 +1,42 @@
+security:
+  providers:
+    jwt_user_provider:
+      id: App\Model\Repository\ContactPersonRepository
+  password_hashers:
+    App\Model\Entity\InternalUser: bcrypt
+    App\Model\Entity\ContactPerson: bcrypt
+  firewalls:
+    dev:
+      pattern: ^/(_(profiler|wdt)|css|images|js)/
+      security: false
+    admin:
+      pattern: ^/api.customer_portal/v1/admin
+      security: false
+    password_recovery:
+      pattern: ^/api.customer_portal/v1/password-recovery
+      security: false
+    public-login:
+        pattern: ^/api.customer_portal/v1/public/login
+        security: false
+    authenticate-public-login:
+      pattern: ^/api.customer_portal/v1/public/authenticate
+      security: false
+    authenticate-from-admin-portal:
+      pattern: ^/api.customer_portal/v1/public/ap
+      security: false
+    create-public-login:
+      pattern: ^/api.customer_portal/v1/public/signup
+      security: false
+    api:
+      pattern: ^/api.customer_portal/v1
+      security: false
+
+  access_control:
+    - { path: ^/api.customer_portal/v1/login, roles: PUBLIC_ACCESS  }
+    - { path: ^/api.customer_portal/v1/public/login, roles: PUBLIC_ACCESS  }
+    - { path: ^/api.customer_portal/v1/public/signup, roles: PUBLIC_ACCESS  }    
+    - { path: ^/api.customer_portal/v1/public/authenticate, roles: PUBLIC_ACCESS  }
+    - { path: ^/api.customer_portal/v1/public/ap, roles: PUBLIC_ACCESS  }
+    - { path: ^/api.customer_portal/v1/password-recovery, roles: PUBLIC_ACCESS  }
+    - { path: ^/api.admin_portal/v1/*, roles: PUBLIC_ACCESS  }
+    - { path: ^/api.customer_portal/v1, roles: IS_AUTHENTICATED_FULLY }

@@ -1,0 +1,321 @@
+[
+  {
+    "name": "Accuracy",
+    "childs": [
+      {
+        "name": "Mistranslation",
+        "childs": [
+          {
+            "name": "Improper exact match"
+          },
+          {
+            "name": "Ambiguous translation"
+          },
+          {
+            "name": "Date/time"
+          },
+          {
+            "name": "Entity (such as name or place)"
+          },
+          {
+            "name": "False friend"
+          },
+          {
+            "name": "Mistranslation of technical relationship"
+          },
+          {
+            "name": "Number"
+          },
+          {
+            "name": "Overly literal"
+          },
+          {
+            "name": "Should not have been translated"
+          },
+          {
+            "name": "Edited ICE match"
+          },
+          {
+            "name": "Unit conversion"
+          }
+        ]
+      },
+      {
+        "name": "Over-translation"
+      },
+      {
+        "name": "Under-translation"
+      },
+      {
+        "name": "Addition"
+      },
+      {
+        "name": "Omission",
+        "childs": [
+          {
+            "name": "Omitted text"
+          },
+          {
+            "name": "Omitted variable"
+          }
+        ]
+      },
+      {
+        "name": "Untranslated",
+        "childs": [
+          {
+            "name": "Untranslated text"
+          },
+          {
+            "name": "Untranslated graphic"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Design",
+    "childs": [
+      {
+        "name": "Markup",
+        "childs": [
+          {
+            "name": "Added markup"
+          },
+          {
+            "name": "Inconsistent markup"
+          },
+          {
+            "name": "Misplaced markup"
+          },
+          {
+            "name": "Missing markup"
+          },
+          {
+            "name": "Questionable markup"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Fluency",
+    "childs": [
+      {
+        "name": "Ambiguity",
+        "childs": [
+          {
+            "name": "Unclear reference"
+          }
+        ]
+      },
+      {
+        "name": "Cohesion"
+      },
+      {
+        "name": "Duplication"
+      },
+      {
+        "name": "Grammar",
+        "childs": [
+          {
+            "name": "Function words"
+          },
+          {
+            "name": "Word form",
+            "childs": [
+              {
+                "name": "Agreement"
+              },
+              {
+                "name": "Part of speech"
+              },
+              {
+                "name": "Tense/mood/aspect"
+              }
+            ]
+          },
+          {
+            "name": "Word order"
+          }
+        ]
+      },
+      {
+        "name": "Grammatical register"
+      },
+      {
+        "name": "Inconsistency",
+        "childs": [
+          {
+            "name": "Inconsistent abbreviations"
+          },
+          {
+            "name": "Images vs. text"
+          },
+          {
+            "name": "Inconsistent link/cross-reference"
+          },
+          {
+            "name": "TM inconsistency"
+          }
+        ]
+      },
+      {
+        "name": "Index/TOC",
+        "childs": [
+          {
+            "name": "Incorrect/inconsistent TOC item"
+          }
+        ]
+      },
+      {
+        "name": "Link/cross-reference",
+        "childs": [
+          {
+            "name": "Document-external link"
+          }
+        ]
+      },
+      {
+        "name": "Nonallowed characters"
+      },
+      {
+        "name": "Offensive"
+      },
+      {
+        "name": "Pattern problem"
+      },
+      {
+        "name": "Sorting (i.e. alphabetization)"
+      },
+      {
+        "name": "Spelling",
+        "childs": [
+          {
+            "name": "Capitalization"
+          },
+          {
+            "name": "Diacritics"
+          }
+        ]
+      },
+      {
+        "name": "Typography",
+        "childs": [
+          {
+            "name": "Spacing"
+          },
+          {
+            "name": "Punctuation"
+          },
+          {
+            "name": "Unpaired quote marks or brackets"
+          }
+        ]
+      },
+      {
+        "name": "Unintelligible"
+      }
+    ]
+  },
+  {
+    "name": "Locale convention",
+    "childs": [
+      {
+        "name": "Date format"
+      },
+      {
+        "name": "Locale-specific punctuation",
+        "childs": [
+          {
+            "name": "Quote mark type"
+          }
+        ]
+      },
+      {
+        "name": "Measurement format"
+      },
+      {
+        "name": "Name format"
+      },
+      {
+        "name": "Number format"
+      },
+      {
+        "name": "Time format"
+      }
+    ]
+  },
+  {
+    "name": "Style",
+    "childs": [
+      {
+        "name": "Register",
+        "childs": [
+          {
+            "name": "Variants/slang"
+          }
+        ]
+      },
+      {
+        "name": "Awkward"
+      },
+      {
+        "name": "Client style guide"
+      },
+      {
+        "name": "In-house style"
+      },
+      {
+        "name": "Unidiomatic"
+      }
+    ]
+  },
+  {
+    "name": "Terminology",
+    "childs": [
+      {
+        "name": "Inappropriate Archaism/Modernism"
+      },
+      {
+        "name": "Inconsistent with glossary",
+        "childs": [
+          {
+            "name": "Company terminology"
+          },
+          {
+            "name": "In-house terminology"
+          }
+        ]
+      },
+      {
+        "name": "Inconsistent with domain"
+      },
+      {
+        "name": "Inconsistent use of terminology",
+        "childs": [
+          {
+            "name": "Multiple translations of same term"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Verity",
+    "childs": [
+      {
+        "name": "Culture-specific reference"
+      },
+      {
+        "name": "End-user suitability"
+      },
+      {
+        "name": "Legal requirements"
+      }
+    ]
+  },
+  {
+    "name": "Other"
+  }  
+]

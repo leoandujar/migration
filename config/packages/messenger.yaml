@@ -1,0 +1,16 @@
+framework:
+  messenger:
+    transports:
+    routing:
+
+when@prod:
+  framework:
+    messenger:
+      transports:
+        async: "%env(MESSENGER_TRANSPORT_DSN)%"
+
+when@dev:
+  framework:
+    messenger:
+      transports:
+        async: "%env(MESSENGER_TRANSPORT_DSN)%"

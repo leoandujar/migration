@@ -1,0 +1,47 @@
+<html>
+<head>
+	<title>Buy cool new product</title>
+	<script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+{{ dump(data) }}
+<table>
+	<col>
+	<colgroup span="2"></colgroup>
+	<colgroup span="2"></colgroup>
+
+	<tr>
+		{% for category in activities %}
+			<td rowspan="1"></td>
+			<th colspan="2" scope="colgroup">{{ category }}</th>
+		{% endfor %}
+	</tr>
+	<tr>
+		<th scope="col">Language</th>
+		{% for category in activities %}
+			<th scope="col">Tasks</th>
+			<th scope="col">Hours</th>
+			<th scope="col">Cost</th>
+		{% endfor %}
+	</tr>
+	{% for lang, currentVal in data %}
+			<tr>
+		{% for cat, current in currentVal %}
+			<th scope="row">{{ lang }}</th>
+			{% for category in activities %}
+				{% if currentVal[category] is defined %}
+					<td>{{ currentVal[category]['tasks'] }}</td>
+					<td>{{ currentVal[category]['hours'] }}</td>
+					<td>{{ currentVal[category]['cost'] }}</td>
+				{% else %}
+					<td>0.00</td>
+					<td>0.00</td>
+					<td>0.00</td>
+				{% endif %}
+			{% endfor %}
+				</tr>
+		{% endfor %}
+	{% endfor %}
+</table>
+</body>
+</html>

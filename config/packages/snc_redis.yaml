@@ -1,0 +1,10 @@
+snc_redis:
+  clients:
+    redis_main_db:
+      type: phpredis
+      alias: redis_main_db
+      dsn: "%env(REDIS_URL)%/0"
+    redis_password_db:
+      type: phpredis
+      alias: redis_password_db
+      dsn: "%env(REDIS_URL)%/1"

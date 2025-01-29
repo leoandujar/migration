@@ -1,0 +1,62 @@
+<html>
+<head>
+	<title>Buy cool new product</title>
+	<script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+<table id="table-list" class="table width-stretch table-hover">
+	<thead>
+	<tr>
+		<th class="text-nowrap">{% trans %}Id{% endtrans %}</th>
+		<th class="text-nowrap">{% trans %}Final Number{% endtrans %}</th>
+		<th class="text-nowrap">{% trans %}Invoice Status{% endtrans %}</th>
+		<th class="text-nowrap">{% trans %}Payment Status{% endtrans %}</th>
+		<th class="text-nowrap">{% trans %}Paid Value{% endtrans %}</th>
+		<th class="text-nowrap">{% trans %}Total Netto{% endtrans %}</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td>{{ data.id }}</td>
+		<td>{{ data.finalNumber }}</td>
+		<td>{{ data.state }}</td>
+		<td>{{ data.paymentState }}</td>
+		<td>{{ data.paidValue }}</td>
+		<td>{{ data.totalNetto }}</td>
+	</tr>
+	</tbody>
+</table>
+
+<button id="checkout-button">Pay</button>
+<script type="text/javascript">
+    // Create an instance of the Stripe object with your publishable API key
+    var stripe = Stripe('pk_test_51HnT0yJRY4pNGP6fnm7j1iqNCnazjjEkXt6W3VFDY2SwRCb5L345wYgx8MqeRz50edtDdl1qMsVicsz1EgyXbQG900Z2Z2krLw');
+    var id = {{ data.id }};
+    var checkoutButton = document.getElementById('checkout-button');
+    checkoutButton.addEventListener('click', function() {
+	    var url = '/stripe/webhooks/'+id+'/payment?XDEBUG_SESSION_START=1'
+        fetch(url, {
+            method: 'POST',
+        })
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(session) {
+                return stripe.redirectToCheckout({ sessionId: session.data.sessionId });
+            })
+            .then(function(result) {
+            	console.log(result)
+                // If `redirectToCheckout` fails due to a browser or network
+                // error, you should display the localized error message to your
+                // customer using `error.message`.
+                if (result.error) {
+                    alert(result.error.message);
+                }
+            })
+            .catch(function(error) {
+                console.error('Error:', error);
+            });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+{% extends 'Emails/layoutap.html.twig' %}
+
+{% block hero %}
+    {% include 'Emails/assets/images/u_password.svg.twig'
+        with {
+        width: "200",
+    } %}
+{% endblock %}
+{% block title %}
+    One-Time Password
+{% endblock %}
+{% block content %}
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" class="tableTitleDescription" style="">
+        <tbody>
+        <tr>
+            <td
+                    align="center" valign="top" style="padding-bottom: 10px;" class="mediumTitle">
+                <!-- Medium Title Text // -->
+                <p class="text"
+                   style="color: rgb(51, 65, 85);font-family: 'Overpass', sans-serif; font-size: 18px; font-weight: 500; font-style: normal; letter-spacing: normal; line-height: 26px; text-transform: none; text-align: center; padding: 0px; margin: 0px;"></p>
+            </td>
+        </tr>
+
+        <tr>
+            <td
+                    align="center" valign="top" style="padding-bottom: 20px;" class="description">
+                <!-- Description Text// -->
+                <p class="text"
+                   style="color: rgb(102, 102, 102); font-family: 'Overpass', sans-serif; font-size: 14px; font-weight: 400; font-style: normal; letter-spacing: normal; line-height: 22px; text-transform: none; text-align: justify; padding: 0px; margin: 0px;">
+                    We have received a login request for your AvantPortal account. For
+                    security purposes, please verify your identity by providing the
+                    following One-Time Password (OTP).
+                </p>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" class="tableTitleDescription" style="">
+        <tbody>
+        <tr>
+            <td
+                    align="center" valign="top" style="padding-bottom: 20px;" class="description">
+                <!-- Description Text// -->
+                <p class="text"
+                   style="color: rgb(102, 102, 102); font-family: 'Overpass', sans-serif; font-size: 14px; font-weight: 400; font-style: normal; letter-spacing: normal; line-height: 22px; text-transform: none; text-align: justify; padding: 0px; margin: 0px;"
+                   data-font="active">
+                    Your One-Time Password (OTP) verification code is:
+
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td
+                    align="center" valign="top" style="padding-bottom: 10px;" class="mediumTitle">
+                <!-- Medium Title Text // -->
+                <p class="text"
+                   style="color: rgb(51, 65, 85);font-family: 'Overpass', sans-serif; font-size: 20px; font-weight: 500; font-style: normal; letter-spacing: normal; line-height: 26px; text-transform: none; text-align: center; padding: 0px; margin: 0px;">
+                    {{ code }}
+                </p>
+            </td>
+        </tr>
+
+        <tr>
+            <td
+                    align="center" valign="top" style="padding-bottom: 20px;" class="description">
+                <!-- Description Text// -->
+                <p class="text"
+                   style="color: rgb(102, 102, 102); font-family: 'Overpass', sans-serif; font-size: 14px; font-weight: 400; font-style: normal; letter-spacing: normal; line-height: 22px; text-transform: none; text-align: justify; padding: 0px; margin: 0px;"
+                   data-font="active">
+                    One-Time Password (OTP) is valid for 10 minutes.
+                    If you did not initiate this login request, please disregard this
+                    message. Please ensure the confidentiality of your OTP and do not share
+                    it with anyone.
+                </p>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+{% endblock %}

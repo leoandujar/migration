@@ -1,0 +1,18 @@
+when@prod:
+  sentry:
+    dsn: '%env(SENTRY_DSN)%'
+
+    #        If you are using Monolog, you also need this additional configuration to log the errors correctly:
+    #        https://docs.sentry.io/platforms/php/guides/symfony/#monolog-integration
+    register_error_listener: false
+    register_error_handler: false
+    options:
+      server_name: '%env(LOGS_HOST)%'
+      ignore_exceptions:
+        - 'Symfony\Component\ErrorHandler\Error\FatalError'
+        - 'Symfony\Component\Debug\Exception\FatalErrorException'
+        - 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException'
+
+  services:
+    Monolog\Processor\PsrLogMessageProcessor:
+      tags: { name: monolog.processor, handler: sentry }

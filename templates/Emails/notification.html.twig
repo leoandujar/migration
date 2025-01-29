@@ -1,0 +1,141 @@
+{% extends 'Emails/layoutap.html.twig' %}
+
+
+{% block head %}
+	<style>
+		/* Attribute list ------------------------------ */
+		.attributes {
+			margin: 0 0 21px;
+		}
+
+		.attributes_content {
+			background-color: #F4F4F7;
+			padding: 16px;
+		}
+
+		.attributes_item {
+			padding: 0;
+
+		}
+	</style>
+	{% endblock %}
+
+	{% block hero %}
+		{% include 'Emails/assets/images/u_announcement.svg.twig'
+		with {
+				width: "200",
+		} 
+	%}
+	{% endblock %}
+	{% block title %}
+		{{title|default('') }}
+	{% endblock %}
+	{% block content %}
+		<table border="0" cellpadding="0" cellspacing="0" width="100%" class="tableTitleDescription" style="">
+			<tbody>
+				<tr>
+					<td
+						align="center" valign="top" style="padding-bottom: 10px;" class="mediumTitle">
+						<!-- Medium Title Text // -->
+						<p class="text" style="color: rgb(51, 65, 85);font-family: 'Overpass', sans-serif; font-size: 18px; font-weight: 500; font-style: normal; letter-spacing: normal; line-height: 26px; text-transform: none; text-align: center; padding: 0px; margin: 0px;"></p>
+					</td>
+				</tr>
+
+				<tr>
+					<td
+						align="center" valign="top" style="padding-bottom: 20px;" class="description">
+						<!-- Description Text// -->
+						<p class="text" style="color: rgb(102, 102, 102); font-family: 'Overpass', sans-serif; font-size: 14px; font-weight: 400; font-style: normal; letter-spacing: normal; line-height: 22px; text-transform: none; text-align: justify; padding: 0px; margin: 0px;">
+							{{content|default('') }}
+						</p>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		{% if details %}
+			<table border="0" cellpadding="0" cellspacing="0" width="100%" class="tableTitleDescription" style="">
+				<tbody>
+					<tr>
+						<td
+							align="center" valign="top" style="padding-bottom: 20px;" class="description">
+							<!-- Description Text// -->
+							<p class="text" style="color: rgb(102, 102, 102); font-family: 'Overpass', sans-serif; font-size: 14px; font-weight: 400; font-style: normal; letter-spacing: normal; line-height: 22px; text-transform: none; text-align: justify; padding: 0px; margin: 0px;" data-font="active">
+								Details:
+							</p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<table class="attributes" width="100%" cellpadding="0" cellspacing="0" role="presentation">
+				<tr>
+					<td class="attributes_content">
+						<table width="100%" cellpadding="0" cellspacing="0" role="presentation">
+							<tr>
+								<td class="attributes_item" style="color: rgb(102, 102, 102); font-family: 'Overpass', sans-serif; font-size: 14px;">
+									<ul>
+										{% for detail in details %}
+
+											<li>{{ detail }}</li>
+
+										{% endfor %}
+									</ul>
+								</td>
+							</tr>
+						</tr>
+					</td>
+				</tr>
+			</table>
+
+		{% endif %}
+
+	</td>
+</tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%" class="tableButton" style="">
+<tbody>
+	<tr>
+		<td align="center" valign="top" style="padding-top:20px;padding-bottom:20px;">
+			{% if actionButton %}
+				<!-- Button Table // -->
+				<table align="center" border="0" cellpadding="0" cellspacing="0">
+					<tbody>
+						<tr>
+							<td
+								align="center" valign="top" style="padding-bottom: 20px;" class="description">
+								<!-- Description Text// -->
+								<p class="text" style="color: rgb(102, 102, 102); font-family: 'Overpass', sans-serif; font-size: 14px; font-weight: 400; font-style: normal; letter-spacing: normal; line-height: 22px; text-transform: none; text-align: justify; padding: 0px; margin: 0px;" data-font="active">
+									{{actionInstructions|default('') }}
+								</p>
+							</td>
+						</tr>
+						<tr>
+							<td
+								align="center" class="ctaButton" style="background-color: rgb(210, 153, 0); padding: 12px 35px; border-radius: 50px;">
+								<!-- Button Link // -->
+								<a class="text" href="{{actionLink|default('#') }}" target="_blank" style="color:#FFFFFF; font-family: 'Overpass', sans-serif; font-size:13px; font-weight:600; font-style:normal;letter-spacing:1px; line-height:20px; text-transform:uppercase; text-decoration:none; display:block">
+									{{actionButton|default('') }}
+								</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			{% endif %}
+			{% if actionLinks %}
+				<table align="center" border="0" cellpadding="0" cellspacing="0">
+					<tbody>
+						<tr>
+							<td style="color: rgb(102, 102, 102); font-family: 'Overpass', sans-serif; font-size: 14px;">
+								<ul>
+									{% for link in actionLinks %}
+
+										<li><a href="{{ link }}" target="_blank"> {{ link }}</a> </li>
+
+									{% endfor %}
+								</ul>
+							</td>
+
+						</tr>
+					</tbody>
+				</table>
+			{% endif %}
+		</td>
+	</tr>
+</tbody></table>{% endblock %}

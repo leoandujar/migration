@@ -1,0 +1,7 @@
+mercure:
+  hubs:
+    default:
+      url: '%env(MERCURE_PUBLISH_URL)%'
+      jwt:
+        secret: '%mercure_jwt_secret%'
+        provider: App\Apis\Shared\Util\MercureTokenProvider

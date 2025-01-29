@@ -1,0 +1,128 @@
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+  app.base_url: "%env(APP_BASE_URL)%"
+  app.cp_url: "%env(APP_CP_URL)%"
+  app.ap_url: "%env(APP_AP_URL)%"
+  app.qa_enabled: "%env(APP_QA_ENABLED)%"
+
+  app.logs.host: "%env(LOGS_HOST)%"
+  app.logs.app: "%env(LOGS_APP)%"
+  app.logs.logdna_key: "%env(LOGDNA_KEY)%"
+  app.logs.loki_url: "%env(LOKI_URL)%"
+  app.logs.loki_user: "%env(LOKI_USER)%"
+  app.logs.loki_password: "%env(LOKI_PASSWORD)%"
+
+  app.xtrf.api_url: "%env(XTRF_API_URL)%"
+  app.xtrf.auth_token: "%env(XTRF_AUTH_TOKEN)%"
+
+  app.xtm.wsdl: "%env(XTM_WSDL)%"
+  app.xtm.url: "%env(XTM_URL)%"
+  app.xtm.company: "%env(XTM_COMPANY)%"
+  app.xtm.user.id: "%env(XTM_USER_ID)%"
+  app.xtm.username: "%env(XTM_USERNAME)%"
+  app.xtm.password: "%env(XTM_PASSWORD)%"
+  app.xtm.login_token: "%env(XTM_LOGIN_TOKEN)%"
+  teams.default.webhook: "%env(TEAMS_DEFAULT_WEBHOOK)%"
+  teams.admin.webhook: "%env(TEAMS_ADMIN_WEBHOOK)%"
+
+  app.admin.jwt.secret_key: "%env(JWT_ADMIN_SECRET_KEY)%"
+
+  qbo.api_url: "%env(QBO_API_URL)%"
+  qbo.oauth_client_id: "%env(QBO_OAUTH_CLIENT_ID)%"
+  qbo.oauth_client_secret: "%env(QBO_OAUTH_CLIENT_SECRET)%"
+  qbo.oauth_scopes: "%env(QBO_OAUTH_SCOPES)%"
+  qbo.webhook_notification_token: "%env(QBO_WEBHOOK_NOTIFICATION_TOKEN)%"
+
+  app.xtrf.customer.url: "%env(resolve:XTRF_CUSTOMER_API_URL)%"
+
+  jwt_ttl: "%env(resolve:JWT_TTL)%"
+  jwt_algorithm: "RS256"
+  jwt_private_key: "%env(resolve:JWT_SECRET_KEY)%"
+  jwt_public_key: "%env(resolve:JWT_PUBLIC_KEY)%"
+  jwt_refresh_ttl: "%env(resolve:JWT_REFRESH_TTL)%"
+
+  mercure_jwt_secret: '%env(MERCURE_JWT_SECRET)%'
+
+  twilio_id: "%env(resolve:TWILIO_SID)%"
+  twilio_token: "%env(resolve:TWILIO_TOKEN)%"
+  twilio_aid: "%env(resolve:TWILIO_AID)%"
+  twilio_number: "%env(resolve:TWILIO_FROM)%"
+
+  app.postmark_api_key: "%env(POSTMARK_API_KEY)%"
+  app.postmark_sender.notifications: "%env(POSTMARK_SENDER_NOTIFICATIONS)%"
+
+  app.postmark.tpl_id.pub_login: "%env(POSTMARK_TEMPLATE_PUB_LOGIN_ID)%"
+  app.postmark.tpl_id.workflow: "%env(POSTMARK_TEMPLATE_WORKFLOW_ID)%"
+  app.postmark.tpl_id.project: "%env(POSTMARK_TEMPLATE_PROJECT_ID)%"
+  app.postmark.tpl_id.create: "%env(POSTMARK_TEMPLATE_CREATE_ID)%"
+  app.postmark.tpl.id.cp_user_reset_password: "%env(POSTMARK_TEMPLATE_CP_USER_RESET_PASSWORD)%"
+
+  az.connection.string: 'DefaultEndpointsProtocol=https;AccountName=%env(AZURE_STORAGE_ACCOUNT_NAME)%;AccountKey=%env(AZURE_STORAGE_ACCOUNT_KEY)%;'
+  az.ftp.connection.string: 'DefaultEndpointsProtocol=https;AccountName=%env(AZURE_STORAGE_FTP_ACCOUNT_NAME)%;AccountKey=%env(AZURE_STORAGE_FTP_ACCOUNT_KEY)%;'
+  az.storage.account.name: '%env(AZURE_STORAGE_ACCOUNT_NAME)%'
+  az.storage.account.key: '%env(AZURE_STORAGE_ACCOUNT_KEY)%'
+  az.storage.workflow.container: '%env(AZURE_STORAGE_WORKFLOW_CONTAINER)%'
+  az.file.storage.container: '%env(AZURE_FILE_STORAGE_CONTAINER)%'
+  az.storage.account.blobEndpointUri: 'https://%env(AZURE_STORAGE_ACCOUNT_NAME)%.blob.core.windows.net'
+  az.storage.account.queueEndpointUri: 'https://%env(AZURE_STORAGE_ACCOUNT_NAME)%.queue.core.windows.net'
+  az.storage.account.tableEndpointUri: 'https://%env(AZURE_STORAGE_ACCOUNT_NAME)%.table.core.windows.net'
+  az.storage.account.fileEndpointUri: 'https://%env(AZURE_STORAGE_ACCOUNT_NAME)%.file.core.windows.net'
+
+  az.storage.archive.account.name: '%env(AZURE_STORAGE_ARCHIVE_ACCOUNT_NAME)%'
+  az.storage.archive.account.key: '%env(AZURE_STORAGE_ARCHIVE_ACCOUNT_KEY)%'
+  az.storage.archive.account.blobEndpointUri: 'https://%env(AZURE_STORAGE_ACCOUNT_NAME)%.blob.core.windows.net'
+  az.storage.archive.account.queueEndpointUri: 'https://%env(AZURE_STORAGE_ACCOUNT_NAME)%.queue.core.windows.net'
+  az.storage.archive.account.tableEndpointUri: 'https://%env(AZURE_STORAGE_ACCOUNT_NAME)%.table.core.windows.net'
+  az.storage.archive.account.fileEndpointUri: 'https://%env(AZURE_STORAGE_ACCOUNT_NAME)%.file.core.windows.net'
+  az.file.storage.archive.container: '%env(AZURE_STORAGE_ARCHIVE_CONTAINER)%'
+  az.archive.connection.string: 'DefaultEndpointsProtocol=https;AccountName=%env(AZURE_STORAGE_ARCHIVE_ACCOUNT_NAME)%;AccountKey=%env(AZURE_STORAGE_ARCHIVE_ACCOUNT_KEY)%;'
+
+  azure.oauth2.redirect_uri: '%env(OAUTH_AZURE_REDIRECT_URI)%'
+
+  az.cognitive.vision.key: '%env(AZURE_COGNITIVE_VISION_KEY)%'
+  az.cognitive.vision.endpoint: '%env(AZURE_COGNITIVE_VISION_ENDPOINT)%'
+
+  ocr.url: '%env(OCR_URL)%'
+  ocr.username: '%env(OCR_USERNAME)%'
+  ocr.license.code: '%env(OCR_LICENSE_CODE)%'
+
+  app.tika.url: '%env(TIKA_URL)%'
+
+  stripe.sk: '%env(STRIPE_API_SK)%'
+  stripe.pk: '%env(STRIPE_API_PK)%'
+  stripe.webhook_signature: '%env(STRIPE_API_WEBHOOK_SIGNATURE)%'
+
+  hubspot.api_url: "%env(HUBSPOT_API_URL)%"
+  hubspot.client_secret: "%env(HUBSPOT_CLIENT_SECRET)%"
+  hubspot.api_access_token: "%env(HUBSPOT_API_ACCESS_TOKEN)%"
+
+  kernelProjectDir: '%kernel.project_dir%'
+
+  cp.refresh_token.ttl: "%env(CP_REFRESH_TOKEN_TTL)%"
+  cp.refresh_token.ttl_update: "%env(CP_REFRESH_TOKEN_TTL_UPDATE)%"
+  cp.refresh_token.single_use: "%env(CP_REFRESH_TOKEN_SINGLE_USE)%"
+
+  clouflared.images.url: "%env(CLOUDFLARED_IMAGES_URL)%"
+  clouflared.images.token: "%env(CLOUDFLARED_IMAGES_TOKEN)%"
+
+  app.boostlingo.url: '%env(BOOSTLINGO_URL)%'
+  app.boostlingo.email: '%env(BOOSTLINGO_EMAIL)%'
+  app.boostlingo.password: '%env(BOOSTLINGO_PASSWORD)%'
+
+  app.jsreport.url: '%env(JSREPORT_URL)%'
+
+  admin_portal_title: '%env(ADMIN_APP_TITLE)%'
+  customer_portal_title: '%env(CUSTOMER_APP_TITLE)%'
+  mailer_sender_no_reply: '%env(MAILER_SENDER_NO_REPLY)%'
+  mailer_sender_support: '%env(MAILER_SENDER_SUPPORT)%'
+  mailer_sender_notification: '%env(MAILER_SENDER_NOTIFICATION)%'
+
+  app.files.local.path: '%env(APP_FILES_LOCAL_PATH)%'
+  app.files.temp.path: '%env(APP_FILES_TEMP_PATH)%'
+  app.files.temp.bucket: '%env(APP_FILES_TEMP_BUCKET)%'
+  app.files.tools.path: '%env(APP_FILES_TOOLS_PATH)%'
+
+  cp.macro_id_create_user: '%env(MACRO_ID_CREATE_USER)%'
+
+  app.messenger_enabled: '%env(ENABLE_SCHEDULER)%'

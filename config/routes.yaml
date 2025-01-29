@@ -1,0 +1,9 @@
+api.customer_portal:
+  prefix: /api.customer_portal/v1
+  resource: "../src/Apis/CustomerPortal/Controller/"
+  type: attribute
+api.admin_portal:
+  prefix: /api.admin_portal/v1
+  resource: "../src/Apis/AdminPortal/Controller/"
+  type: attribute
+

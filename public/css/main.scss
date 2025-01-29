@@ -1,0 +1,72 @@
+html, body {
+  font-size: 18pt;
+}
+
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  background-color: #fff;
+  color: #004;
+}
+
+#grid {
+  margin: 1rem 5%;
+}
+
+header {
+  grid-area: header;
+  height: 18rem;
+}
+
+header > div {
+  background: url('../images/logo.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  margin: 0 1rem;
+  height: 100%;
+}
+
+@media only screen and (min-width: 850px) and (orientation: landscape) {
+
+  #grid {
+	display: grid;
+	grid-template-columns: 3fr 2fr;
+	grid-template-rows: auto 1fr auto;
+	grid-template-areas: "content header" "content sidebar" "footer footer";
+	margin: 1rem 10%;
+  }
+
+  header {
+	height: 12rem;
+  }
+
+}
+
+@media only screen and (max-resolution: 96dpi) {
+
+  html, body {
+	font-size: 12pt;
+  }
+
+}
+
+main {
+  grid-area: content;
+}
+
+h1 {
+  color: #400;
+}
+
+aside {
+  grid-area: sidebar;
+  text-align: center;
+  padding: 1rem;
+}
+
+footer {
+  grid-area: footer;
+  font-size: 70%;
+  padding: 1em;
+
+}

@@ -1,0 +1,9 @@
+knpu_oauth2_client:
+  clients:
+    microsoft:
+      type: azure
+      client_id: '%env(OAUTH_AZURE_CLIENT_ID)%'
+      client_secret: '%env(OAUTH_AZURE_CLIENT_SECRET)%'
+      redirect_route: ap_login_sso_microsoft_check
+      redirect_params: { }
+      use_state: false

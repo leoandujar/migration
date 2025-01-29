@@ -1,0 +1,40 @@
+# Read the documentation at https://github.com/thephpleague/flysystem-bundle/blob/master/docs/1-getting-started.md
+flysystem:
+  storages:
+    default.storage:
+      adapter: 'local'
+      options:
+        directory: '%env(APP_FILES_LOCAL_PATH)%'
+    cp.files.storage:
+      adapter: 'aws'
+      options:
+        client: 'aws_client_1'
+        bucket: '%env(CUSTOMER_PORTAL_FILE_BUCKET_NAME)%'
+        prefix: 'profile_pictures'
+    ap.files.storage:
+      adapter: 'aws'
+      options:
+        client: 'aws_client_1'
+        bucket: '%env(ADMIN_PORTAL_FILE_BUCKET_NAME)%'
+        prefix: 'public'
+
+    ############   AWS  #############################
+    aws.projects.storage:
+      adapter: 'aws'
+      options:
+        client: 'aws_client_1'
+        bucket: '%env(AWS_STORAGE_BUCKET_PROJECTS)%'
+    aws.invoices.storage:
+      adapter: 'aws'
+      options:
+        client: 'aws_client_1'
+        bucket: '%env(AWS_STORAGE_BUCKET_INVOICES)%'
+    ###########  AZURE ##############################
+    az.workflow.storage:
+      adapter: 'azure_adapter_workflow'
+
+    az.archive.storage:
+      adapter: 'azure_adapter_archive'
+
+    az.ftp.storage:
+      adapter: 'azure_adapter_ftp'

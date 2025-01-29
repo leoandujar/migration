@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTDXHTML1.0Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+	<head>
+		<!--[if (gte mso 9)|(IE)]>
+																																																																			<xml>
+																																																																				<o:OfficeDocumentSettings>
+																																																																					<o:AllowPNG/>
+																																																																					<o:PixelsPerInch>96</o:PixelsPerInch>
+																																																																				</o:OfficeDocumentSettings>
+																																																																			</xml>
+																																																																			<![endif]-->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<meta name="viewport" content="width=device-width"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<title>Avantpage Notifications</title>
+
+		<!-- Google Fonts Link -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Overpass:wght@300;400;600;700&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Lora:400,700" rel="stylesheet"/>
+
+		{# Include a file with styles for this template. #}
+		{% include 'Emails/layoutap_styles.html.twig' %}
+
+		{% block head %}{% endblock %}
+	</head>
+	<body style="background-color:#F9F9F9;">
+		<center>
+			<table border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout:fixed;background-color:#F9F9F9;" id="bodyTable">
+				<tbody>
+					<tr>
+						<td align="center" valign="top" style="padding-right:10px;padding-left:10px;" id="bodyCell">
+							<!--[if (gte mso 9)|(IE)]><table align="center" border="0" cellspacing="0" cellpadding="0" style="width:600px;" width="600"><tr><td align="center" valign="top"><![endif]-->
+							<!-- Email Wrapper Header Open //-->
+
+							{# Use partial layoutap_email_wrapper #}
+							{% include 'Emails/layoutap_email_wrapper.html.twig' %}
+
+							<!-- Email Wrapper Header Close //-->
+
+							<!-- Email Wrapper Body Open // -->
+							<table border="0" cellpadding="0" cellspacing="0" style="max-width:600px;" width="100%" class="wrapperBody">
+								<tbody>
+									<tr>
+										<td align="center" valign="top">
+											<!-- Table Card Open // -->
+											<table border="0" cellpadding="0" cellspacing="0" style="background-color:#FFFFFF;border-color:#E5E5E5; border-style:solid; border-width:0 1px 1px 1px;" width="100%" class="tableCard">
+												<tbody>
+													<tr>
+														<!-- Header Top Border // -->
+														<td height="4" style="background-color: rgb(24, 141, 145); font-size: 1px; line-height: 3px;" class="topBorder">&nbsp;</td>
+													</tr>
+													<tr>
+														<td align="center" valign="top" style="padding-bottom: 20px;" class="imgHero">
+															<!-- Hero Image // -->
+															{% block hero %}{% endblock %}
+														</td>
+													</tr>
+													<tr>
+														<td align="center" valign="top" style="padding-bottom: 20px; padding-left: 20px; padding-right: 20px;" class="mainTitle">
+															<!-- Main Title Text // -->
+															<h2 class="text" style="color: rgb(51, 65, 85);font-family: 'Overpass', sans-serif; font-size: 28px; font-weight: 500; font-style: normal; letter-spacing: normal; line-height: 36px; text-transform: none; text-align: center; padding: 0px; margin: 0px;"> {% block title %}{% endblock %}</h2>
+														</td>
+													</tr>
+													<tr>
+														<td align="center" valign="top" style="padding-bottom: 10px; padding-left: 20px; padding-right: 20px;" class="subTitle">
+															<!-- Sub Title Text // -->
+															<h4 class="text" style="color:#999999; font-family: 'Overpass', sans-serif; font-size:16px; font-weight:500; font-style:normal; letter-spacing:normal; line-height:24px; text-transform:none; text-align:center; padding:0; margin:0">
+																{% block hello %}
+																	Dear
+																	{% if name is defined %}
+																		{{name}},
+																	{% endif %}
+																{% endblock %}
+															</h4>
+														</td>
+													</tr>
+
+													<tr>
+														<td align="center" valign="top" style="padding-left:20px;padding-right:20px;" class="containtTable ui-sortable"> {% block content %}{% endblock %}
+														</td>
+													</tr>
+
+													<tr>
+														<td height="20" style="font-size:1px;line-height:1px;">&nbsp;</td>
+													</tr>
+
+													<tr>
+														<td align="center" valign="middle" style="padding-bottom: 40px;" class="emailRegards">
+															<!-- Image and Link // -->
+															<a href="#" target="_blank" style="text-decoration:none;" class="">
+																<img mc:edit="signature" src="" alt="" width="150" border="0" style="width:100%;
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																											max-width:150px; height:auto; display:block;" class="">
+															</a>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+													<!-- Table Card Close// -->
+													<!-- Space -->
+											<table border="0" cellpadding="0" cellspacing="0" width="100%" class="space">
+												<tbody>
+													<tr>
+														<td height="30" style="font-size:1px;line-height:1px;">&nbsp;</td>
+													</tr>
+												</tbody>
+											</table>
+
+										</td>
+									</tr>
+								</tbody>
+							</table>
+									<!-- Email Wrapper Body Close // -->
+									<!-- Email Wrapper Footer Open // -->
+							<table border="0" cellpadding="0" cellspacing="0" style="max-width:600px;" width="100%" class="wrapperFooter">
+								<tbody>
+									<tr>
+										<td align="center" valign="top">
+													<!-- Content Table Open// -->
+											<table border="0" cellpadding="0" cellspacing="0" width="100%" class="footer">
+												<tbody>
+													<tr>
+														<td align="center" valign="top" style="padding-top:10px;padding-bottom:10px;padding-left:10px;padding-right:10px;" class="socialLinks">
+																	<!-- Social Links (Facebook)// -->
+															<a href="https://www.facebook.com/Avantpage" target="_blank" style="display: inline-block;" class="facebook">
+																<img src="https://imagedelivery.net/J0SC3p_qqwQ9UBTxIQllsg/18093673-ecb0-4878-3bf2-98c9018c9500/logo" alt="" width="40" border="0" style="height:auto; width:100%; max-width:40px; margin-left:2px; margin-right:2px" class="">
+															</a>
+																	<!-- Social Links (Twitter)// -->
+
+																	<!-- Social Links (Pintrest)// -->
+
+																	<!-- Social Links (Instagram)// -->
+
+																	<!-- Social Links (Linkdin)// -->
+															<a href="https://www.linkedin.com/company/avantpage-translations" target="_blank" style="display: inline-block;" class="linkdin"> <img src="https://imagedelivery.net/J0SC3p_qqwQ9UBTxIQllsg/7b7d9e20-db10-4da7-e4f7-e2966b1aff00/logo" alt="" width="40" border="0" style="height:auto; width:100%; max-width:40px; margin-left:2px; margin-right:2px" class="">
+															</a>
+														</td>
+													</tr>
+													<tr>
+														<td align="center" valign="top" style="padding: 10px 10px 5px;" class="brandInfo">
+																	<!-- Brand Information // -->
+															<p class="text" style="color:#777777; font-family: 'Overpass', sans-serif; font-size:12px; font-weight:400; font-style:normal; letter-spacing:normal; line-height:20px; text-transform:none; text-align:center; padding:0; margin:0;">©&nbsp;Avantpage Inc. | 523 G Street, Davis, CA 95616, USA.</p>
+														</td>
+													</tr>
+													<tr>
+														<td align="center" valign="top" style="padding: 0px 10px 10px;" class="footerEmailInfo">
+																	<!-- Information of NewsLetter (Subscribe Info)// -->
+															<p class="text" style="color:#777777; font-family: 'Overpass', sans-serif; font-size:12px; font-weight:400; font-style:normal; letter-spacing:normal; line-height:20px; text-transform:none; text-align:center; padding:0; margin:0;">
+																	If you have any questions please contact your project manager
+																<br>
+															</p>
+														</td>
+													</tr>
+													<tr>
+														<td align="center" valign="top" style="padding: 0px 10px 20px;" class="footerLinks">
+																	<!-- Use Full Links (Privacy Policy)// -->
+															<p class="text" style="color:#777777; font-family: 'Overpass', sans-serif; font-size:12px; font-weight:400; font-style:normal; letter-spacing:normal; line-height:20px; text-transform:none; text-align:center; padding:0; margin:0;"></p>
+														</td>
+													</tr>
+													<tr>
+														<td align="center" valign="top" style="padding-top:10px;padding-bottom:10px;padding-left:10px;padding-right:10px;" class="appLinks">
+																	<!-- App Links (Anroid)// -->
+															<a href="#Play-Store-Link" target="_blank" style="display: inline-block;" class="play-store">
+																		<img src="" alt="" width="120" border="0" style="height:auto;margin:5px;width:100%;max-width:120px;" class="">
+															</a>
+																	<!-- App Links (IOs)// -->
+															<a href="#App-Store-Link" target="_blank" style="display: inline-block;" class="app-store">
+																		<img src="" alt="" width="120" border="0" style="height:auto;margin:5px;width:100%;max-width:120px;" class="">
+															</a>
+														</td>
+													</tr>
+															<!-- Space -->
+													<tr>
+														<td height="30" style="font-size:1px;line-height:1px;">&nbsp;</td>
+													</tr>
+												</tbody>
+											</table>
+													<!-- Content Table Close// -->
+										</td>
+									</tr>
+											<!-- Space -->
+									<tr>
+										<td height="30" style="font-size:1px;line-height:1px;">&nbsp;</td>
+									</tr>
+								</tbody>
+							</table>
+									<!-- Email Wrapper Footer Close // -->
+									<!--[if (gte mso 9)|(IE)]></td></tr></table><![endif]-->
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</center>
+	</body>
+</html>
