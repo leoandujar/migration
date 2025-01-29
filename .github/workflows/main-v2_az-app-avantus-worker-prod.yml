@@ -30,7 +30,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: true
-          tags: ghcr.io/avantpage/avantus:n-worker-${{ github.sha }}
+          tags: ghcr.io/leoandujar/avantus:n-worker-${{ github.sha }}
           file: ./docker/next.worker.Dockerfile
 
   deploy:
