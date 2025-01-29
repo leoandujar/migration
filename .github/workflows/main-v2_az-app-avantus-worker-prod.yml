@@ -6,7 +6,7 @@ name: Build and deploy container app to Azure Web App - az-app-avantus-worker-pr
 on:
   push:
     branches:
-      - amain-v2
+      - testing
   workflow_dispatch:
 
 jobs:

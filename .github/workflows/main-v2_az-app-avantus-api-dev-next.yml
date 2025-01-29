@@ -6,7 +6,7 @@ name: Build and deploy Web App - az-app-avantus-api-dev-next
 on:
   push:
     branches:
-      - main
+      - testing
   workflow_dispatch:
 
 jobs:

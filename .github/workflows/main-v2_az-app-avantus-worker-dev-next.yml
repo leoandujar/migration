@@ -6,7 +6,7 @@ name: Deploy Web App - az-app-avantus-worker-dev-next
 on:
   push:
     branches:
-      - main
+      - testing
   workflow_dispatch:
 
 jobs:
